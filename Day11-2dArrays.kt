@@ -23,6 +23,7 @@ fun main(args: Array<String>) {
     val arr = Array<Array<Int>>(6, { Array<Int>(6, { 0 }) })
 
     var highestSum = 0
+    var sumArray = Array(16){0}
 
     for (i in 0 until 6) {
         arr[i] = scan.nextLine().split(" ").map{ it.trim().toInt() }.toTypedArray()
@@ -30,12 +31,13 @@ fun main(args: Array<String>) {
 
     for (i in 0 until 4) {
         for (j in 0 until 4) {
-            val aux = arr[i][j] + arr[i][j+1] + arr[i][j+2] + arr[i+1][j+1] + arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j+2]
+            sumArray[highestSum] = arr[i][j] + arr[i][j+1] + arr[i][j+2] + arr[i+1][j+1] + arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j+2]
 
-            if(highestSum < aux) highestSum = aux
+            highestSum++
         }
     }
 
-    print(highestSum)
+    sumArray.sort()
+    print(sumArray[15])
 
 }
